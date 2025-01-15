@@ -6,9 +6,56 @@
  */
 
 import greenfoot.*;
+import java.util.ArrayList;
 
 public class Deck 
 {
+    private ArrayList <Card> shuffledDeck;
+    private Card []unShuffledDeck;
+    private int numCardsInDeck;
+    private Card topCard;
+    private Card shuffledCard;
+    private Card unShuffledDeckWithCards;
+    
+    
+    
+    private int getNumCardsInDeck()
+    {
+        return numCardsInDeck;
+        //keeps track of how many unused cards remain in the deck
+    }
+    private Card getTopCard()
+    {
+        return topCard;
+        //returns the top card of the deck as the cards are dealt
+    }
+    private Card getShuffledCard()
+    {
+        return shuffledCard;
+        //returns a card at a specific location in the deck
+    }
+    private ArrayList getShuffledDeck()
+    {
+        return shuffledDeck;
+        //returns the entire shuffled deck
+    }
+    private int limitNumCardsInDeck()
+    {
+        return numCardsInDeck;
+        //forces the number of cards in the unshuffled deck to either be 27 (3 set of 3 characteristics of triples) or 81(3 set of 4 characteristics of triples). 
+
+    }
+    private Card populateUnShuffledDeckWithCards()
+    {
+        return unShuffledDeckWithCards;
+        //initializes all the cards to the unshuffled deck
+    }
+    public ArrayList createShuffledDeck()
+    {
+        return shuffledDeck;
+        //shuffles the unshuffled deck to form the shuffled deck.  Removes blank card.
+    }
+    
     /****************************************************
     ***   Leave as comment until ready to implement   ***
     *****************************************************
