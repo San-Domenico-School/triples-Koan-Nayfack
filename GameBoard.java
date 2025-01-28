@@ -14,6 +14,9 @@ public class GameBoard extends World
     {   
         super(430, 600, 1, false); 
         new Tester(NUM_CARDS_IN_DECK);
+        Deck deck = new Deck(NUM_CARDS_IN_DECK);
+        addObject (new Dealer(81), -30, -30);
+         
     }
 
 
