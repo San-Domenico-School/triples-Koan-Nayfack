@@ -52,7 +52,7 @@ public class Dealer extends Actor
         Integer cardsRemaining = new Integer (numCardsInDeck-15);
         Integer score = new Integer(0);
         getWorld().getBackground().drawString(cardsRemaining.toString(),305, 475);
-        getWorld().getBackground().drawString(cardsRemaining.toString(),308, 510);
+        getWorld().getBackground().drawString(score.toString(),308, 510);
     }
     public void endGame()
     {
