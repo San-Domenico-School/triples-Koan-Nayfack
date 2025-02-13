@@ -33,7 +33,12 @@ public class Deck
     }
     protected Card getTopCard()
     {
+        if (getNumCardsInDeck() == 0)
+        {
+            return null;
+        }
         return shuffledDeck.remove(0);
+        
         //returns the top card of the deck as the cards are dealt
     }
     protected Card getShuffledCard(int index)

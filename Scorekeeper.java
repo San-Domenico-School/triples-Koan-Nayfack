@@ -25,22 +25,17 @@ public class Scorekeeper
     
     public static void updateScore()
     {
-        if (firstUpdate)
-        {
-            score = 27;
-            firstUpdate = false;
-        }
-        else {
+        
             // Calculate elapsed time since the last update in seconds
             long currentTime = System.currentTimeMillis();
             int elapsedTime = (int) ((currentTime - startTime) / 1000);
 
             // Update score: Subtract time penalty, minimum score is 0
-            score = Math.max(0, score - elapsedTime);
+            score = Math.max(10, 27 - elapsedTime);
 
             // Reset start time for next calculation
             startTime = currentTime;
-        }
+        
 
         }
     public static int getScore()

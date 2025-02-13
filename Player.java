@@ -11,7 +11,7 @@ public class Player extends Actor
         if (threeCardsHaveBeenSelected) 
         {
             dealer.setCardsSelected(cardsOnBoard, selectedCardsIndex, cardsSelected);
-            dealer.checkIfTriple();
+            dealer.checkIfTriple(cardsSelected);
             resetCardsSelected();
         }
     }
@@ -38,6 +38,7 @@ public class Player extends Actor
 
     private void selectCards() 
     {
+        cardsOnBoard = new ArrayList<>(getWorld().getObjects(Card.class));
         for (Card card : cardsOnBoard) 
         {
         

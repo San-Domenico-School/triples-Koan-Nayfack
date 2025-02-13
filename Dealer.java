@@ -53,10 +53,10 @@ public class Dealer extends Actor
     }
     public void setUI()
     {
-        Integer cardsRemaining = new Integer (numCardsInDeck-15);
-        Integer score = new Integer(0);
-        getWorld().getBackground().drawString(cardsRemaining.toString(),305, 475);
-        getWorld().getBackground().drawString(score.toString(),308, 510);
+        Integer cardsRemaining = new Integer (deck.getNumCardsInDeck() + 15);
+        Integer score = Scorekeeper.getScore();
+        getWorld().showText ("" + cardsRemaining,305, 475);
+        getWorld().showText ("" + score ,308, 510);
     }
     public void endGame()
     {
@@ -69,7 +69,7 @@ public class Dealer extends Actor
         checkColor(cardsSelected);
         checkNumberOfShapes(cardsSelected);
         checkShading(cardsSelected);
-             if (shapeType || colorType || numberOfShapesType || shadingType) 
+        if (shapeType && colorType && numberOfShapesType && shadingType) 
         {
             actionIfTriple();
         } 
@@ -159,36 +159,43 @@ public class Dealer extends Actor
             cardLocations[i][1] = cardsSelected[i].getY(); // Y-coordinate
         }
     
-        
-    
         // Remove the cards from the board
         for (int i = 0; i < cardsSelected.length; i++)  
         {
             int x = cardLocations[i][0];
             int y = cardLocations[i][1];
+            getWorld().removeObject(cardsSelected[i]);
+            //cardsOnBoard.remove(cardsSelected[i]);
+            
         }
     
         // Deal new cards and add them to the board
         for (int i = 0; i < cardsSelected.length; i++) 
         {
+             
+        
             int x = cardLocations[i][0];
             int y = cardLocations[i][1];
             Card card = deck.getTopCard();
-            getWorld().addObject(card, x, y);
+            if(card != null)
+            {
+                getWorld().addObject(card, x, y);
+            }
+            
         }
     
         // Decrement triplesRemaining
-        triplesRemaining--;
+        
     
         // Update the score
         Scorekeeper.updateScore(); 
     
-        // Set the new UI
-        setUI(); // Assuming a method exists in GameBoard to refresh the UI
+        cardsOnBoard = new ArrayList<>(getWorld().getObjects(Card.class));
+        setUI(); 
     
-        // Check to see if the game is over
-        endGame();
-        }
+        
+        
+    }
     
     public void setCardsSelected(ArrayList <Card> cardList, ArrayList <Integer> numCardsSelected, Card[] selectedCards )
     {
